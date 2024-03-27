@@ -1,0 +1,64 @@
+Apa itu Controller?
+Sebuah controller dalam Laravel adalah kelas PHP yang bertanggung jawab untuk mengelola logika aplikasi, menerima input dari pengguna, dan mengembalikan output yang sesuai. Controller biasanya digunakan untuk mengatur interaksi antara model (data) dan view (tampilan).
+
+Membuat Controller:
+Untuk membuat controller, Anda dapat menggunakan perintah Artisan berikut:
+php artisan make:controller NamaController
+Ini akan membuat file controller baru di direktori app/Http/Controllers.
+
+
+Metode dalam Controller:
+Controller memiliki berbagai metode yang mewakili aksi yang dapat diambil dalam aplikasi. Metode ini sering kali berkaitan dengan operasi CRUD (Create, Read, Update, Delete) pada model. Contoh metode pada controller adalah index(), create(), store(), show(), edit(), update(), dan destroy().
+// app/Http/Controllers/PostController.php
+
+
+// READ ALL DATA POST
+public function index() 
+{
+    $posts = $this->postModel->all();
+    return view('posts.index', compact('posts'));
+}
+
+// LINK TO CREATE FORM
+public function create() 
+{
+    return view('posts.create');
+}
+
+//CREATE DATA POST
+public function store(Request $request) 
+{
+    $this->postModel->create($request->all());
+    return redirect()->route('posts.index')->with('success', 'Post created successfully');
+}
+
+//READ DETAIL DATA ON CLICK
+public function show($id)
+{
+    $post = $this->postModel->findOrFail($id);
+    return view('posts.show', compact('post'));
+}
+
+//LINK TO EDIT FORM
+public function edit($id)
+{
+    $post = $this->postModel->findOrFail($id);
+    return view('posts.edit', compact('post'));
+}
+
+//UPDATE DATA
+public function update(Request $request, $id) 
+{
+    $post = $this->postModel->findOrFail($id);
+    $post->update($request->all());
+    return redirect()->route('posts.index')->with('success', 'Post updated successfully');
+}
+
+// DELETE DATA
+public function destroy($id) 
+{
+    $post = $this->postModel->findOrFail($id);
+    $post->delete();
+    return redirect()->route('posts.index')->with('success', 'Post deleted successfully');
+}
+
