@@ -26,10 +26,10 @@ class VehicleResource extends Resource
                 Forms\Components\TextInput::make('user_id')
                     ->required()
                     ->numeric(),
-                Forms\Components\TextInput::make('vehicle_type')
+                Forms\Components\TextInput::make('vehicle_type_id')
                     ->required()
                     ->numeric(),
-                Forms\Components\TextInput::make('vehicle_brand')
+                Forms\Components\TextInput::make('vehicle_brand_id')
                     ->required()
                     ->numeric(),
                 Forms\Components\TextInput::make('location')
@@ -55,7 +55,7 @@ class VehicleResource extends Resource
                 Forms\Components\TextInput::make('price')
                     ->required()
                     ->numeric()
-                    ->prefix('$'),
+                    ->prefix('IDR'),
                 Forms\Components\Toggle::make('is_available')
                     ->required(),
             ]);
@@ -68,13 +68,14 @@ class VehicleResource extends Resource
                 Tables\Columns\TextColumn::make('user_id')
                     ->numeric()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('vehicle_type')
+                Tables\Columns\TextColumn::make('vehicle_type_id')
                     ->numeric()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('vehicle_brand')
+                Tables\Columns\TextColumn::make('vehicle_brand_id')
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('location')
+                    ->sortable()
                     ->searchable(),
                 Tables\Columns\TextColumn::make('model')
                     ->searchable(),
@@ -89,7 +90,7 @@ class VehicleResource extends Resource
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('price')
-                    ->money()
+                    ->money('IDR')
                     ->sortable(),
                 Tables\Columns\IconColumn::make('is_available')
                     ->boolean(),
@@ -107,6 +108,7 @@ class VehicleResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make()
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

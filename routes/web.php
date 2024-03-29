@@ -47,3 +47,9 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+// Route::prefix('admin')->group(function () {
+//     Route::get('/admin', function () {
+//         return view('admin.login');
+//     });
+// });

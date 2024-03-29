@@ -1,4 +1,4 @@
-@extends('layout.main')
+@extends('layouts.main')
 
 @section('content')
     <div class="w-full flex flex-col justify-start items-center">
@@ -12,6 +12,7 @@
     <div class="w-full flex justify-center items-center">
         <div class="border-2 border-slate-400 shadow-lg rounded-lg w-full mx-14">
             <form action="/rent">
+                @csrf
             <div class="flex flex-col items-center">
                 <div class="flex w-full justify-center md:justify-start items-center px-14 py-3">
                     <h3 class="lg:text-2xl sm:text-lg text-black">Sewa Kendaraan</h3>

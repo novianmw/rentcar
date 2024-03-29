@@ -1,4 +1,4 @@
-@extends('layout.main')
+@extends('layouts.main')
 
 @section('content')
 <div class="w-full flex flex-row items-start py-10 gap-5">
