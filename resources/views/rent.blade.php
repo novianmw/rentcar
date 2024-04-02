@@ -3,11 +3,18 @@
 @section('content')
     <div class="w-full flex justify-center items-center">
         <div class="border-2 border-slate-400 shadow-lg rounded-lg w-full mx-14">
-            <form action="/rent">
+            <form action="{{ url('/rent') }}">
             <div class="flex flex-col items-center">
                 <div class="flex w-full justify-center md:justify-start items-center px-14 py-3">
                     <h3 class="lg:text-2xl sm:text-lg text-black">Sewa Kendaraan</h3>
                 </div>
+                @if ($vehicles->count())
+                    <div class="flex w-full justify-center md:justify-start items-center px-14 py-3">
+                        <p class="">
+                            {{ request('location') }} • {{ request('start_date') }} • {{ request('end_date') }}
+                        </p>
+                    </div>
+                @endif
                 <div class="w-full flex flex-col md:flex-row justify-center items-center border-t-2 border-b-2">
                     <div class="max-w-1/3 w-full flex flex-col items-center border-b-2 border-r-0 md:border-r-2 md:border-b-0 py-3 gap-5">
                         <div class="flex justify-center">
@@ -112,7 +119,7 @@
                         <p class="">IDR {{ number_format($vehicle->price, 0, ',', '.') }}</p>
                     </div>
                     <div class="flex items-center">
-                        <a href="{{ url('/detail') }}?id={{ $vehicle->id }}type={{ $vehicle->type }}&brand={{ $vehicle->brand }}&location={{ $vehicle->location }}" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2 text-center inline-flex items-center">
+                        <a href="{{ url('/detail') }}?id={{ $vehicle->id }}type={{ $vehicle->vehicleType->type }}&brand={{ $vehicle->vehicleBrand->brand }}&location={{ $vehicle->location }}" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2 text-center inline-flex items-center">
                             PILIH
                         </a>
                     </div>
