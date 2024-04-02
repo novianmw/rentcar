@@ -120,14 +120,19 @@
                                 <p class="">Location : {{ $vehicle->location }}</p>
                             </div>
                         </div>
-                        <div class="w-full flex flex-row justify-between items-center p-5 gap-5">
+                        <div class="w-full flex flex-col items-start p-5">
                             <div class="flex items-center">
-                                <p class="">IDR {{ number_format($vehicle->price, 0, ',', '.') }} </p>
+                                <p class="">Starting</p>
                             </div>
-                            <div class="flex items-center">
-                                <a href="{{ url('/detail') }}?id={{ $vehicle->id }}type={{ $vehicle->vehicleType->type }}&brand={{ $vehicle->vehicleBrand->brand }}&location={{ $vehicle->location }}" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2 text-center inline-flex items-center">
-                                    PILIH
-                                </a>
+                            <div class="w-full flex flex-row justify-between items-center">
+                                <div class="flex items-center">
+                                    <p class="">IDR {{ number_format($vehicle->price, 0, ',', '.') }} / Day</p>
+                                </div>
+                                <div class="flex items-center">
+                                    <a href="{{ url('/detail') }}?id={{ $vehicle->id }}type={{ $vehicle->vehicleType->type }}&brand={{ $vehicle->vehicleBrand->brand }}&location={{ $vehicle->location }}&start_date={{ now()->addDay()->format('Y-m-d') }}&end_date={{ now()->addDay(2)->format('Y-m-d') }}" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2 text-center inline-flex items-center">
+                                        PILIH
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>      
