@@ -27,7 +27,7 @@ Route::get('/about', function() {
 Route::get('/faq', [FaqController::class, 'index']); //DONE CHECK
 Route::get('/faq/{category:slug}', [FaqController::class, 'show']); //DONE CHECK
 Route::get('/rent', [RentController::class, 'index']); //DONE CHECK
-Route::get('/detail', [DetailController::class, 'show']); //DONE CHECK
+Route::get('/detail', [DetailController::class, 'show'])->middleware(['auth', 'verified']); //DONE CHECK
 
 
 
