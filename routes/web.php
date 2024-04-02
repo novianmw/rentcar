@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [HomeController::class, 'index']); //DONE CHECK
+Route::get('/', [HomeController::class, 'index'])->name('home'); //DONE CHECK
 Route::get('/about', function() {
     return view('about', [
         'title' => 'ABOUT | Broom.id',

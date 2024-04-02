@@ -3,5 +3,5 @@
 </svg> --}}
 <div class="flex flex-row justify-start items-center gap-5">
     <img class="w-5 md:w-8 lg:w-10" src="{{ asset('assets/images/car logo.png') }}" alt="">
-    <p class="text-[16px] md:text-[20px] lg:text-[24px]">Broom.id</p>
+    <p class="text-[16px] md:text-[20px] lg:text-[24px] text-gray-800 dark:text-gray-200">Broom.id</p>
 </div>
