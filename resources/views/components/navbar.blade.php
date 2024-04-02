@@ -17,12 +17,19 @@
             <a href="{{ url('/dashboard') }}" class="text-sm rounded-full py-2 px-6 border border-black bg-black lg:mt-0 text-white hover:bg-slate-600 duration-300">
                 <p class="text-[14px] lg:text-[16px]">Dashboard</p>
             </a>
+            <form class="text-sm rounded-full py-2 px-6 border border-black bg-black lg:mt-0 text-white hover:bg-slate-600 duration-300" method="POST" action="{{ route('logout') }}">
+                @csrf
+                <button href="{{ route('logout') }}"
+                        onclick="event.preventDefault(); this.closest('form').submit();">
+                        {{ __('Log Out') }}
+                </button>
+            </form>
         @else
             <a href="{{ route('login') }}" class="text-sm rounded-full py-2 px-6 border border-black bg-black lg:mt-0 text-white hover:bg-slate-600 duration-300">
                 <p class="text-[14px] lg:text-[16px]">Login</p>
             </a>
             @if (Route::has('register'))
-                <a href="{{ route('login') }}" class="text-sm rounded-full py-2 px-4 border border-black bg-black lg:mt-0 text-white hover:bg-slate-600 duration-300">
+                <a href="{{ route('register') }}" class="text-sm rounded-full py-2 px-4 border border-black bg-black lg:mt-0 text-white hover:bg-slate-600 duration-300">
                     <p class="text-[14px] lg:text-[16px]">Sign Up</p>
                 </a>
             @endif
