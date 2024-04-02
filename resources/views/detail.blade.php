@@ -1,6 +1,18 @@
 @extends('layouts.main')
 
 @section('content')
+<div class="flex flex-col items-center">
+    <div class="flex w-full justify-center md:justify-start items-center px-14">
+        <h3 class="lg:text-2xl sm:text-lg text-black">Sewa Kendaraan</h3>
+    </div>
+    @if ($vehicles->count())
+        <div class="flex w-full justify-center md:justify-start items-center px-14">
+            <p class="">
+                {{ request('location') }} • {{ request('start_date') }} - {{ request('end_date') }}
+            </p>
+        </div>
+    @endif
+</div>
 <div class="w-full flex flex-row items-start py-10 gap-5">
     <div class="flex items-center w-full">
         <img class="rounded-r-lg" src="{{ asset('assets/Images/hanson-lu-MOHTDu-68no-unsplash.jpg') }}" alt="">
